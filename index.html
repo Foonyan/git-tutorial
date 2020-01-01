@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Sample1</title>
+<script type="text/javascript">
+    function Sample1(){
+        var hoge = Sample1_form.textbox.value;  //テキストエリアの値を取得
+         
+        alert(""+ hoge +"がデータベースに登録されました。");
+	var db = firebase.firestore();
+
+ 	db.collection("users").add({
+   	 first: hoge,
+})
+.then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+});
+    
+
+}
+</script>
+</head>
+
+
+</head>
+<body>
+データベース登録テスト
+<form name="Sample1_form" action="Sample1.html">
+<input type="text" name="textbox">
+<input type="button" value="Sample1" onclick="Sample1()">
+
+
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>	
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDa2YD1O9sjMi_y1lQ66pWxW0Ic3pwcw2s",
+    authDomain: "remitest-b1f7a.firebaseapp.com",
+    databaseURL: "https://remitest-b1f7a.firebaseio.com",
+    projectId: "remitest-b1f7a",
+    storageBucket: "remitest-b1f7a.appspot.com",
+    messagingSenderId: "17536734344",
+    appId: "1:17536734344:web:c89269acdf3fb264f7fb3d",
+    measurementId: "G-N5W4V1WDBX"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+
+</script>
+
+</body>
+</html>
